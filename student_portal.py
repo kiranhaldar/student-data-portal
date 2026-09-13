@@ -308,3 +308,13 @@ with st.form("gov_master_form", clear_on_submit=False):
                 st.write("Confirmation telemetry dispatched to administrator email.")
             else:
                 st.write("Record saved in central archive. Notification delivery pending.")
+# --- ADMIN EXCEL EXPORT ---
+if os.path.exists(EXCEL_FILE):
+    st.markdown("---")
+    with open(EXCEL_FILE, "rb") as f:
+        st.download_button(
+            label=" Download Master Excel Records",
+            data=f,
+            file_name="student_master_records.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
